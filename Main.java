@@ -1,5 +1,11 @@
 import java.util.*;
 
+/* 
+setA.addAll(setB)	A ∪ B	Agrega a setA los elementos de setB que no estén ya presentes
+setA.retainAll(setB)	A ∩ B	Elimina de setA todo lo que no esté en setB
+setA.removeAll(setB)	A \ B	Elimina de setA todo lo que sí esté en setB
+*/
+
 public class Main {
 
     public static void main(String[] args) {
@@ -25,11 +31,28 @@ public class Main {
         System.out.println(sb.toString().trim());
     }
 
+    public static TreeSet<Integer> jugadoresActivos(int[] servidorA, int[] servidorB, int[] baneados) {
 
-    public static TreeSet<Integer> jugadoresActivos(int[] servidorA,
-                                                     int[] servidorB,
-                                                     int[] baneados) {
-        // TODO: implemente este método
-        return new TreeSet<>();
+        TreeSet<Integer> JugadoreServidorA = new TreeSet<>();
+        for(int id:JugadoreServidorA) JugadoreServidorA.add(id);
+
+        TreeSet<Integer> JugadoreServidorB = new TreeSet<>();
+        for(int id:JugadoreServidorB) JugadoreServidorB.add(id);
+
+        TreeSet<Integer> JugadoresBaneados = new TreeSet<>();
+        for(int id:JugadoresBaneados) JugadoresBaneados.add(id);
+
+        JugadoreServidorA.retainAll(JugadoreServidorB);
+        JugadoreServidorA.retainAll(JugadoresBaneados);
+
+        return JugadoreServidorA;
+       
     }
 }
+
+/*
+5 4 2
+3 7 1 9 3
+5 7 2 9
+7 2
+*/
